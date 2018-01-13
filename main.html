@@ -18,7 +18,8 @@
         <input type="checkbox" ng-model='todo.done'>
     </li>
 </ul>
-
+<div>todoList:{{todos.length}}</div>
+<div>todo:{{listTodo()}}</div>
 </body>
 
 <script>
@@ -28,9 +29,16 @@
         $scope.add = function () {
             console.log($scope.doing);
             $scope.todos.push({doing: $scope.doing, done: false});
+            $scope.doing = '';
         }
-        $scope.doing = '';
 
+        $scope.listTodo=function () {
+            var count=0;
+            $scope.todos.forEach(function(ele){
+                count += ele.done ? 0 : 1;
+            });
+            return count;
+        }
     }])
 </script>
 </html>
