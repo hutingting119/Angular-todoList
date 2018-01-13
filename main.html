@@ -9,19 +9,28 @@
 <body ng-app="todo" ng-controller="todoList">
 
 <form ng-submit="add()">
-    <input type="text" ng-model="doing">
+    <input type="text" ng-model="doing" name="doing" placeholder="doing">
     <button>add</button>
 </form>
+<ul>
+    <li ng-repeat="todo in todos">
+        <span>{{todo.doing}}</span>
+        <input type="checkbox" ng-model='todo.done'>
+    </li>
+</ul>
 
 </body>
 
 <script>
     var todo = angular.module('todo', []);
     todo.controller('todoList', ['$scope', function ($scope) {
+        $scope.todos = [];
         $scope.add = function () {
-            console.log($scope.doing)
+            console.log($scope.doing);
+            $scope.todos.push({doing: $scope.doing, done: false});
         }
-    }])
+        $scope.doing = '';
 
+    }])
 </script>
 </html>
