@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todoList</title>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.2.9/angular.min.js"></script>
+</head>
+
+<body ng-app="todo" ng-controller="todoList">
+
+<form ng-submit="add()">
+    <input type="text" ng-model="doing">
+    <button>add</button>
+</form>
+
+</body>
+
+<script>
+    var todo = angular.module('todo', []);
+    todo.controller('todoList', ['$scope', function ($scope) {
+        $scope.add = function () {
+            console.log($scope.doing)
+        }
+    }])
+
+</script>
+</html>
